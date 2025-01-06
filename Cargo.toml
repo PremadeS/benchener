@@ -1,0 +1,29 @@
+[package]
+name = "benchener"
+version = "1.0.0"
+edition = "2021"
+description = "A fast and lightweight HTTP benchmarking tool."
+license = "MIT"
+repository = "https://github.com/premades/benchener"
+authors = ["Naya Raasta <nayaraastaco@gmail.com>"]
+
+[dependencies]
+ctrlc = "3.4.5"
+isahc = "1.7.2"
+tokio = { version = "1.42.0", features = ["macros", "rt-multi-thread", "sync", "time"] }
+url = "2.5.4"
+
+[package.metadata.deb]
+maintainer = "Naya Raasta <nayaraastaco@gmail.com>"
+depends = "libssl-dev"
+extended-description = "Benchener is a Rust-based HTTP benchmarking tool designed for speed and efficiency."
+
+
+[package.metadata.rpm]
+package = "benchener"
+
+[package.metadata.rpm.cargo]
+buildflags = ["--release"]
+
+[package.metadata.rpm.targets]
+benchener = { path = "/usr/bin/benchener" }
