@@ -1,6 +1,6 @@
 # **benchener**
 
-*benchener* is a high-performance HTTP benchmarking tool developed in [Rust](). Built on the [isahc](https://docs.rs/isahc/latest/isahc/) crate, it supports both HTTP/1.1 and HTTP/2
+*benchener* is a high-performance HTTP benchmarking tool developed in [Rust](https://www.rust-lang.org/). Built on the [isahc](https://docs.rs/isahc/latest/isahc/) crate, it supports both HTTP/1.1 and HTTP/2
 
 # **Usage**
 
@@ -36,6 +36,52 @@ Latency Distribution:
  99%     400.12 ms
 Request(s) per sec:   813.008
 Transfer per sec:    2995.585 KB (html)
+```
+
+Here is another example without the **summarized** flag
+
+```bash
+benchener -n3000 -c200 -t2 https://www.nayaraasta.com
+```
+
+## **Output**
+
+```bash
+Sending 3000 request(s) to https://www.nayaraasta.com
+using 2 thread(s) and 200 connection(s)
+Please be patient..
+Completed requests: 3000
+
+Hostname:               www.nayaraasta.com
+Port:                   443
+Server Software:        cloudflare
+
+Completed Requests:     3000
+Requests/sec:           191.51
+Total HTML Read:        11053.7109 KB
+Total Time Taken:       15.67s
+
+Time Taken for Requests:
+ Min (ms)     Avg (ms)     Max (ms)    
+ 171.00       737.46       4326.00     
+
+Latency Distribution:
+ 50%    609.00 ms
+ 75%    700.00 ms
+ 90%    797.00 ms
+ 99%    3928.00 ms
+
+Range (ms)      Upper Bound       Requests
+0.00            432.60                1121
+432.60          865.20                1645
+865.20          1297.80                 34
+1297.80         1730.40                  0
+1730.40         2163.00                  0
+2163.00         2595.60                  0
+2595.60         3028.20                  0
+3028.20         3460.80                  0
+3460.80         3893.40                160
+3893.40         4326.00                 40
 ```
 
 ## CLI Arguments
@@ -110,5 +156,9 @@ For other platforms, install **benchener** from source using `cargo`.
 ```bash
 cargo install --git https://github.com/PremadeS/benchener
 ```
+
+# **Contribution**
+
+Contributions are welcomed. Feel free to open issues for bug reports, feature requests, or general questions.
 
 *GUI coming soon*
